@@ -1,0 +1,66 @@
+﻿@page
+@model kindergartenAPP.Pages.Manage.GalleryModel
+
+@{
+}
+
+<h1 class="text-center fs-1 fw-bold mt-5" style="color:#ec008c">Zdjęcia</h1>
+
+<table class="table mt-5">
+    <thead>
+        <tr class="fs-2 mt-3">
+            <th>
+                @Html.DisplayNameFor(model => model.placowkaPlik[0].Link)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.placowkaPlik[0].Nazwa)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.placowkaPlik[0].Data)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.placowkaPlik[0].Opis)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.placowkaPlik[0].Glowny)
+            </th>
+            <th></th>
+        </tr>
+    </thead>
+    <tbody>
+        @foreach (var item in Model.placowkaPlik)
+        {
+            <tr>
+                <td>
+                    <img style="height: 40px;" src="@Html.DisplayFor(m => item.Link)" />
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.Nazwa)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.Data)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.Opis)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.Glowny)
+                </td>
+                <td>
+                    <a asp-page="./Edit" asp-route-id="@item.ID">Edytuj</a> |
+                    <a asp-page="./Delete" asp-route-id="@item.ID">Usuń</a>
+                </td>
+            </tr>
+        }
+    </tbody>
+</table>
+
+<div class="position-relative mt-5">
+    <button type="submit" class="btn btn-lg d-inline-block position-absolute end-50 mt-5 ms-5" style="border-style: solid; border-color:#ec008c;">
+        <a class="nav-link" style="color:#ec008c" asp-page="./Upload" asp-route-id="@Model.placowkaID">Dodaj nowe zdjęcie</a>
+    </button>
+    <div class="d-inline-block ms-3"></div>
+    <button class="btn btn-lg d-inline-block ms-5 position-absolute start-50 mt-5 me-5" style="border-style: solid; border-color:#ec008c;">
+        <a class="nav-link" style="color:#ec008c" asp-area="" asp-page="/Manage/Index">Powrót do listy</a>
+    </button>
+</div>

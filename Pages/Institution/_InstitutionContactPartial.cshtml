@@ -1,0 +1,58 @@
+﻿@*
+    For more information on enabling MVC for empty projects, visit https://go.microsoft.com/fwlink/?LinkID=397860
+*@
+@{
+}
+
+@*Popup window do wyświetlania kontaktów*@
+@model kindergartenAPP.Pages.DetailsModel
+
+<div class="overlay" id="showContact">
+    <div class="wrapper position-relative rounded bg-light" style="margin: 20% auto 0px;padding: 20px; width: 35%;transition: all 5s ease-in-out; border-style: solid; border-color:#ec008c;">
+        <h2 class="mt-0 text-center fs-1 fw-bold" style="color:#ec008c">Masz pytania? Zadzwoń 😁</h2>
+        <a class="close fw-bold fs-3" href="#" style="position: absolute; top: -5px; right: 10px; transition: all 200ms; text-decoration: none; color: #ec008c;">&times;</a>
+        <div class="content" style="max-height: 30%;">
+            <div class="container" style="padding: 20px 0;">
+                <form>
+                    <div class="text-center">
+                        @if (String.IsNullOrEmpty(Model.PlacowkaLista.Telefon))
+                        {
+
+                        }
+                        else
+                        {
+                            <div class="text-center fs-3">
+                                <div class="d-inline-block" style="background:#ec008c; width: 20px; height:20px; border-radius: 100%"></div>
+                                <div class="d-inline-block">@Html.DisplayFor(Model => Model.PlacowkaLista.Telefon)</div>
+                            </div>
+                        }
+
+                        @if (String.IsNullOrEmpty(Model.PlacowkaLista.Komorka))
+                        {
+
+                        }
+                        else
+                        {
+                            <div class="text-center fs-3">
+                                <div class="d-inline-block" style="background:#ec008c; width: 20px; height:20px; border-radius: 100%"></div>
+                                <div class="d-inline-block">@Html.DisplayFor(Model => Model.PlacowkaLista.Komorka)</div>
+                            </div>
+                        }
+
+                        @if (String.IsNullOrEmpty(Model.PlacowkaLista.Email))
+                        {
+
+                        }
+                        else
+                        {
+                            <div class="text-center fs-3">
+                                <div class="d-inline-block" style="background:#ec008c; width: 20px; height:20px; border-radius: 100%"></div>
+                                <div class="d-inline-block">@Html.DisplayFor(Model => Model.PlacowkaLista.Email)</div>
+                            </div>
+                        }
+                    </div>
+                </form>
+            </div>
+        </div>
+    </div>
+</div>

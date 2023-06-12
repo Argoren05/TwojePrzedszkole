@@ -1,0 +1,199 @@
+﻿@page
+@model IndexModel
+
+@{
+    ViewData["Title"] = "Główna";
+}
+
+
+<div class="row mt-5 mb-5">
+    <div class="row col-md-3 mb-5 ms-lg-0 ms-1" style="border-style: solid; border-color:#ec008c; color: #ec008c; height: 40%">
+        <h3 class="text-center">Wyszukaj placówkę</h3>
+        <form id="search" method="post" class="m-1">
+            <div class="form-floating mb-3">
+                <input asp-for="Search.Nazwa" class="form-control" id="floatingInput" placeholder="Nazwa" autocomplete="nazwa" style="border-style: solid; border-color:#ec008c">
+                <label asp-for="Search.Nazwa" for="floatingInput" class="mt-1">Nazwa</label>
+            </div>
+            <div class="form-floating mb-3">
+                <select asp-for="Search.Typ" class="form-control" style="border-style: solid; border-color:#ec008c">
+                    <option>*</option>
+                    <option value="Przedszkole niepubliczne">Przedszkole niepubliczne</option>
+                    <option value="Przedszkole publiczne">Przedszkole publiczne</option>
+                    <option value="Żłobki">Żłobki</option>
+                </select>
+                <label asp-for="Search.Typ" class="form-label">Typ placówki</label>
+            </div>
+            <div class="form-floating mb-3">
+                <input asp-for="Search.Miejscowosc" class="form-control" id="floatingInput" placeholder="Miejscowosc" autocomplete="miejscowosc" style="border-style: solid; border-color:#ec008c">
+                <label asp-for="Search.Miejscowosc" for="floatingInput" class="mt-1">Miejscowosc</label>
+            </div>
+            <div class="form-floating mb-3">
+                <input asp-for="Search.Dzielnica" class="form-control" id="floatingInput" placeholder="Dzielnica" autocomplete="dzielnica" style="border-style: solid; border-color:#ec008c">
+                <label asp-for="Search.Dzielnica" for="floatingInput" class="mt-1">Dzielnica</label>
+            </div>
+            <div class="form-floating mb-3">
+                <input asp-for="Search.Ulica" class="form-control" id="floatingInput" placeholder="Ulica" autocomplete="ulica" style="border-style: solid; border-color:#ec008c">
+                <label asp-for="Search.Ulica" for="floatingInput" class="mt-1">Ulica</label>
+            </div>
+            <div>
+                <button type="submit" class="btn btn-lg p-2 position-relative start-50 translate-middle-x w-100" style="border-style: solid; border-color:#ec008c">Szukaj</button>
+            </div>
+        </form>
+    </div>
+
+    <div class="row col-md-9 ms-lg-4 ms-2">
+        @if (Model.PlacowkaLista.Count == 0)
+        {
+            <div class="row text-center">
+                <div class="col-12">
+                    <div class="alert alert-warning w-100" role="alert"> Nie znaleziono żadnej placówki </div>
+                </div>
+            </div>
+        }
+        else
+        {
+            foreach (var item in Model.PlacowkaLista)
+            {
+                <div class="row mb-5" style="border-style: solid; border-color:#ec008c; color: #ec008c;">
+                    <div class="col-3">
+                        <img class="img-thumbnail img-fluid" src="@Html.DisplayFor(m => item.Zdjecie)" />
+                    </div>
+                    <div class="col-9">
+                        <div class="row">
+                            <div class="col-12">
+                                <h3 style="color:#ec008c" >@Html.DisplayFor(m => item.Nazwa)</h3>
+                                <div>
+                                    <div class="d-inline-block">@Html.DisplayFor(m => item.Miejscowosc),</div>
+                                    <div class="d-inline-block">@Html.DisplayFor(m => item.Dzielnica),</div>
+                                    <div class="d-inline-block">@Html.DisplayFor(m => item.Ulica)</div>
+                                    <div class="d-inline-block">@Html.DisplayFor(m => item.Dom)</div>
+                                    <div class="d-inline-block">
+                                        @if (String.IsNullOrEmpty(item.Lokal))
+                                        {
+
+                                        }
+                                        else
+                                        {
+                                          <p class="d-inline-block">/</p>
+                                          @Html.DisplayFor(m => item.Lokal)
+                                        }
+                                    </div>
+                                </div>
+                                <div class="font-weight-bold">
+                                    <div class="d-inline-block">Kategoria:</div>
+                                    <div class="d-inline-block">@Html.DisplayFor(m => item.PlacowkaTyp)</div>
+                                </div>
+                                <div class="mt-2 text-truncate text-muted">@Html.DisplayFor(m => item.Opis)</div>
+                            </div>
+                        </div>
+                        <div class="row mt-2">
+                            <div class="col-md-2 text-danger">
+                                @if (item.Ocena != null)
+                                {
+                                    <div class="d-inline-block">Ocena:</div>
+                                    <div class="d-inline-block">@Html.DisplayFor(m => item.Ocena)</div>
+                                    <div class="d-inline-block">/10</div>
+                                }
+                                else
+                                {
+                                    <div>Brak oceny</div>
+                                }
+                            </div>
+                            <div class="col-md-3 text-danger">
+                                @if (item.Limit > 0)
+                                {
+                                    <div class="d-inline-block">Zostało</div>
+                                    <div class="d-inline-block">@Html.DisplayFor(m => item.Wolne)</div>
+                                    <div class="d-inline-block">miejsc</div>
+                                }
+                                else
+                                {
+                                    <div class="d-inline-block">Brak rejestracji</div>                                
+                                }
+                            </div>
+                        </div>
+                        <div class="col-md-7 col-12 mt-4 mb-2">
+                            <div class="d-flex flex-row-reverse bd-highlight">
+                                <div>
+                                    <a href="#showContact(@item.ID)" type="button" class="btn btn-info">
+                                        <div class="text-decoration-none text-white">Kontakt</div>
+                                    </a>
+                                </div>
+                                <div>
+                                    @if (item.Limit > 0)
+                                    {
+                                        <button type="button" class="btn" style="background:#ec008c">
+                                            <a class="text-decoration-none text-white" asp-page="/LegalGuardian/Registration/Create" asp-route-id="@item.ID">Zarejestruj dziecko</a>
+                                        </button>
+                                    }
+                                    else
+                                    {
+                                        <button type="button" class="btn btn-danger disabled">Zarejestruj dziecko</button>
+                                    }
+                                </div>
+                                <div>
+                                    <button type="button" class="btn btn-info">
+                                        <a class="text-decoration-none text-white" asp-page="Details" asp-route-id="@item.ID">Zobacz ofertę</a>
+                                    </button>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                @*Popup window do wyświetlania kontaktów*@
+                <div class="overlay" id="showContact(@item.ID)">
+                    <div class="wrapper position-relative rounded bg-light" style="margin: 20% auto 0px;padding: 20px; width: 35%;transition: all 5s ease-in-out; border-style: solid; border-color:#ec008c;">
+                        <h2 class="mt-0 text-center fs-1 fw-bold" style="color:#ec008c">Masz pytania? Zadzwoń 😁</h2>
+                        <a class="close fw-bold fs-3" href="#" style="position: absolute; top: -5px; right: 10px; transition: all 200ms; text-decoration: none; color: #ec008c;">&times;</a>
+                        <div class="content" style="max-height: 30%;">
+                            <div class="container" style="padding: 20px 0;">
+                                <form>
+                                    <div class="text-center">
+                                        @if (String.IsNullOrEmpty(item.Telefon))
+                                        {
+
+                                        }
+                                        else
+                                        {
+                                            <div class="text-center fs-3">
+                                                <div class="d-inline-block" style="background:#ec008c; width: 20px; height:20px; border-radius: 100%"></div>
+                                                <div class="d-inline-block">@Html.DisplayFor(m => item.Telefon)</div>
+                                            </div>
+                                        }
+
+                                        @if (String.IsNullOrEmpty(item.Komorka))
+                                        {
+
+                                        }
+                                        else
+                                        {
+                                            <div class="text-center fs-3">
+                                                <div class="d-inline-block" style="background:#ec008c; width: 20px; height:20px; border-radius: 100%"></div>
+                                                <div class="d-inline-block">@Html.DisplayFor(m => item.Komorka)</div>
+                                            </div>
+                                        }
+
+                                        @if (String.IsNullOrEmpty(item.Email))
+                                        {
+
+                                        }
+                                        else
+                                        {
+                                            <div class="text-center fs-3">
+                                                <div class="d-inline-block" style="background:#ec008c; width: 20px; height:20px; border-radius: 100%"></div>
+                                                <div class="d-inline-block">@Html.DisplayFor(m => item.Email)</div>
+                                            </div>
+                                        }
+                                    </div>
+                                </form>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            }
+        }
+    </div>
+</div>
+
+
+

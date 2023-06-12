@@ -1,0 +1,65 @@
+﻿@page
+@model kindergartenAPP.Pages.Manage.DeleteModel
+
+@{
+    var placowka = Model.Placowka;
+}
+
+<div class="row justify-content-center">
+    <h1 class="text-center fw-bold mt-5" style="color:#ec008c;">Czy na pewno chcesz usunąć tą placówkę?</h1>
+    <div class="row justify-content-center col-10" >
+        <div class="row justify-content-center mt-5 fs-2">
+            <div class="raw mb-lg-0 mb-3">
+                @Html.DisplayNameFor(model => placowka.Nazwa)
+                <span>:</span>
+                @Html.DisplayFor(model => placowka.Nazwa)
+            </div>
+            <div class="raw mb-lg-0 mb-3">
+                @Html.DisplayNameFor(model => placowka.PlacowkaTypID)
+                <span>:</span>
+                @Html.DisplayFor(model => placowka.PlacowkaTyp.Opis)
+            </div>
+            <div class="raw mb-lg-0 mb-3">
+                <span>Adres :</span>
+                @Html.DisplayFor(model => placowka.MiejscowoscID)
+                @Html.DisplayFor(model => placowka.Dzielnica)
+                @Html.DisplayFor(model => placowka.Ulica)
+                @Html.DisplayFor(model => placowka.Dom)
+                @if (placowka.Lokal != null)
+                {
+                    <span>/</span>
+                    @Html.DisplayFor(model => placowka.Lokal)
+                }
+            </div>
+            <div class="raw mb-lg-0 mb-3">
+                @Html.DisplayNameFor(model => placowka.Telefon)
+                <span>:</span>
+                @Html.DisplayFor(model => placowka.Telefon)
+            </div>
+            <div class="raw mb-lg-0 mb-3">
+                @Html.DisplayNameFor(model => placowka.Komorka)
+                <span>:</span>
+                @Html.DisplayFor(model => placowka.Komorka)
+            </div>
+            <div class="raw mb-lg-0 mb-3">
+                @Html.DisplayNameFor(model => placowka.Email)
+                <span>:</span>
+                @Html.DisplayFor(model => placowka.Email)
+            </div>
+            <div class="raw mb-lg-0 mb-3">
+                @if (placowka.Strona != null)
+                {
+                    @Html.DisplayNameFor(model => placowka.Strona)
+                    <span>:</span>
+                    @Html.DisplayFor(model => placowka.Strona)
+                }
+            </div>
+            <form class="row justify-content-center mt-5 mb-md-3 m-auto" method="post">
+                <input type="hidden" asp-for="Placowka.ID" />
+                <button type="submit" class="btn fs-2 rounded col-md-5 mb-3" style="color:red; border:solid; border-color:red">Usuń</button>
+                <div class="col-md-1"></div>
+                <a class="btn rounded fs-2 col-md-5 text-decoration-none mb-3" style="color:#ec008c; border:solid; border-color:#ec008c" asp-page="./Index">Powrót</a>
+            </form>
+        </div>
+    </div>
+</div>

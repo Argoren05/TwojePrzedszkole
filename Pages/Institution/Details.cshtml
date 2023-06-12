@@ -1,0 +1,377 @@
+﻿@page
+@model kindergartenAPP.Pages.Institution.DetailsModel
+
+@{
+
+}
+
+@*Wyświetlenie szczególów placówki*@
+
+<div class="row">
+    @*Nazwa placówki*@
+    <h1 class="text-center fw-bold mt-5 mb-5" style="color:#ec008c; font-family: 'Zen Tokyo Zoo', cursive; font-size: 70px">
+        @Html.DisplayFor(model => model.PlacowkaDetail.PlacowkaLista.Nazwa)
+    </h1>
+    @*Szczegóły*@
+    <div class="row col-md-9 mt-5">
+        @*Ilość wolnych miejsc*@
+        @if (Model.PlacowkaDetail.PlacowkaLista.Limit > 0)
+        {
+            <div class="fs-1 text-center mb-5" style="color:#ec008c;">
+                <div class="d-inline-block">Zostało wolnych</div>
+                <div class="d-inline-block">@Html.DisplayFor(model => model.PlacowkaDetail.PlacowkaLista.Wolne)</div>
+                <div class="d-inline-block">miejsc</div>
+            </div>
+        }
+        else
+        {
+            <div class="d-inline-block fs-1 text-center mb-5" style="color:#ec008c;">W tej wchwili nie przeprowadzamy rejestracji</div>
+        }
+        @*Opis placówki*@
+        <div class="row">
+            <div class="row">
+                <div>
+                    <div class="d-inline-block rounded-circle" style="background:#ec008c; width: 30px; height:30px;"></div>
+                    <h1 class="d-inline-block fs-1 fw-bold ms-2">
+                        @Html.DisplayNameFor(model => model.PlacowkaDetail.PlacowkaLista.Opis)
+                    </h1>
+                </div>
+                <div class="p-3 fs-5">
+                    @Html.DisplayFor(model => model.PlacowkaDetail.PlacowkaLista.Opis)
+                </div>
+            </div>
+        </div>
+        @*Udogodnienia placówki*@
+        <div class="row mt-5">
+            <div class="row">
+                <div>
+                    <div class="d-inline-block rounded-circle" style="background:#ec008c; width: 30px; height:30px;"></div>
+                    <h1 class="d-inline-block fs-1 fw-bold ms-2">
+                        @Html.DisplayNameFor(model => model.PlacowkaDetail.PlacowkaLista.Udogodnienia)
+                    </h1>
+                </div>
+                <div class="p-3 fs-5 rounded" style="border-style: solid; border-color:#ec008c;">
+                    @Html.DisplayFor(model => model.PlacowkaDetail.PlacowkaLista.Udogodnienia)
+                </div>
+            </div>
+        </div>
+        @*Program placówki*@
+        <div class="row mt-5">
+            <div class="row">
+                <div>
+                    <div class="d-inline-block rounded-circle" style="background:#ec008c; width: 30px; height:30px;"></div>
+                    <h1 class="d-inline-block fs-1 fw-bold ms-2">
+                        @Html.DisplayNameFor(model => model.PlacowkaDetail.PlacowkaLista.Program)
+                    </h1>
+                </div>
+                <div class="p-3 fs-5">
+                    @Html.DisplayFor(model => model.PlacowkaDetail.PlacowkaLista.Program)
+                </div>
+            </div>
+        </div>
+        @*Zdjęcia placówki*@
+        <div class="row mt-5">
+            <div>
+                <div class="d-inline-block rounded-circle" style="background:#ec008c; width: 30px; height:30px;"></div>
+                <h1 class="d-inline-block fs-1 fw-bold ms-2">
+                    Galeria
+                </h1>
+            </div>
+            <div class="">
+                @if (Model.PlacowkaDetail.PlacowkaPlik.Count > 0)
+                {
+                    <div id="carouselExampleControls" class="carousel slide" data-bs-ride="carousel">
+                        <div class="carousel-inner">
+                            @foreach (var item in Model.PlacowkaDetail.PlacowkaPlik.Take(1))
+                            {
+                                <div class="carousel-item active">
+                                    <img src="@item.Link" class="d-block w-100 img-fluid" alt="...">
+                                </div>
+                            }
+                            @foreach (var item in Model.PlacowkaDetail.PlacowkaPlik.Skip(1))
+                            {
+                                <div class="carousel-item">
+                                    <img src="@item.Link" class="d-block w-100 img-fluid" alt="...">
+                                </div>
+                            }
+                        </div>
+                        <button class="carousel-control-prev" type="button" data-bs-target="#carouselExampleControls" data-bs-slide="prev">
+                            <span class="carousel-control-prev-icon" aria-hidden="true"></span>
+                            <span class="visually-hidden">Previous</span>
+                        </button>
+                        <button class="carousel-control-next" type="button" data-bs-target="#carouselExampleControls" data-bs-slide="next">
+                            <span class="carousel-control-next-icon" aria-hidden="true"></span>
+                            <span class="visually-hidden">Next</span>
+                        </button>
+                    </div>
+                }
+            </div>
+        </div>
+    </div>
+
+    @*Prawa strona*@
+    <div class="row col-md-3 col-12 ms-1 mt-5 h-50">
+        <div class=" rounded  p-4" style="border-style: solid; border-color:#ec008c;">
+            @*Główne zdjęcie*@
+            <img class="img-fluid rounded-circle" src="@Html.DisplayFor(model => model.PlacowkaDetail.PlacowkaLista.Zdjecie)" />
+            @*Dodatkowe informację*@
+            <ul class="list-group mt-5">
+                @*Zapisz dziecko*@
+                <li class="rounded row" style="border-style: solid; border-color:#ec008c;">
+                    @if (Model.PlacowkaDetail.PlacowkaLista.Limit > 0)
+                    {
+                        <a class="btn justify-content-center" style="border-style: solid; border-color:#ec008c;" asp-page="/LegalGuardian/Registration/Create" asp-route-id="@Model.PlacowkaDetail.PlacowkaLista.ID">
+                            <span>
+                                <img class="mb-2" style="width:35px; height:35px" src="~/icons/add.png" />
+                            </span>
+                            <span class="fs-3 ms-1">
+                                Zapisz
+                            </span>
+                        </a>
+                    }
+                    else
+                    {
+                        <a class="btn justify-content-center disabled" style="border-style: solid; border-color:#ec008c;" asp-page="/LocalGuardian/Registration/Create" asp-route-id="@Model.PlacowkaDetail.PlacowkaLista.ID">
+                            <span>
+                                <img class="mb-2" style="width:35px; height:35px" src="~/icons/add.png" />
+                            </span>
+                            <span class="fs-3 ms-1">
+                                Zapisz
+                            </span>
+                        </a>
+                    }
+                </li>
+                @*Telfon*@
+                <li class="rounded row mt-2" style="border-style: solid; border-color:#ec008c;">
+                    @if (String.IsNullOrEmpty(Model.PlacowkaDetail.PlacowkaLista.Telefon) && String.IsNullOrEmpty(Model.PlacowkaDetail.PlacowkaLista.Komorka))
+                    {
+                        <a href="#PhoneNumber" class="btn justify-content-center disabled" style="border-style: solid; border-color:#ec008c;">
+                            <span>
+                                <img class="mb-2" style="width:35px; height:35px" src="~/icons/phone.png" />
+                            </span>
+                            <span class="fs-3 ms-1">
+                                Telefon
+                            </span>
+                        </a>
+                    }
+                    else
+                    {
+                        <a href="#PhoneNumber" class="btn justify-content-center" style="border-style: solid; border-color:#ec008c;">
+                            <span>
+                                <img class="mb-2" style="width:35px; height:35px" src="~/icons/phone.png" />
+                            </span>
+                            <span class="fs-3 ms-1">
+                                Telefon
+                            </span>
+                        </a>
+                    }
+                </li>
+                @*Mail*@
+                <li class="rounded row mt-2" style="border-style: solid; border-color:#ec008c;">
+                    @if (String.IsNullOrEmpty(Model.PlacowkaDetail.PlacowkaLista.Email))
+                    {
+                        <a href="#EmailAdress" class="btn justify-content-center disabled" style="border-style: solid; border-color:#ec008c;">
+                            <span>
+                                <img class="mb-2" style="width:35px; height:35px" src="~/icons/email.png" />
+                            </span>
+                            <span class="fs-3 ms-1">
+                                Mail
+                            </span>
+                        </a>
+                    }
+                    else
+                    {
+                        <a href="#EmailAdress" class="btn justify-content-center" style="border-style: solid; border-color:#ec008c;">
+                            <span>
+                                <img class="mb-2" style="width:35px; height:35px" src="~/icons/email.png" />
+                            </span>
+                            <span class="fs-3 ms-1">
+                                Mail
+                            </span>
+                        </a>
+                    }
+                </li>
+                @*Adres przedszkola*@
+                <li class="rounded row mt-2" style="border-style: solid; border-color:#ec008c;">
+                    @if (String.IsNullOrEmpty(Model.PlacowkaDetail.PlacowkaLista.Telefon))
+                    {
+                        <a href="#InstitutionAdress" class="btn justify-content-center disabled" style="border-style: solid; border-color:#ec008c;">
+                            <span>
+                                <img class="mb-2" style="width:35px; height:35px" src="~/icons/adres.png" />
+                            </span>
+                            <span class="fs-3 ms-1">
+                                Adres
+                            </span>
+                        </a>
+                    }
+                    else
+                    {
+                        <a href="#InstitutionAdress" class="btn justify-content-center" style="border-style: solid; border-color:#ec008c;">
+                            <span>
+                                <img class="mb-2" style="width:35px; height:35px" src="~/icons/adres.png" />
+                            </span>
+                            <span class="fs-3 ms-1">
+                                Adres
+                            </span>
+                        </a>
+                    }
+                </li>
+                @*Strona internetowa*@
+                <li class="rounded row mt-2" style="border-style: solid; border-color:#ec008c;">
+                    @if (String.IsNullOrEmpty(Model.PlacowkaDetail.PlacowkaLista.Strona))
+                    {
+                        <a href="#Site" class="btn justify-content-center" style="border-style: solid; border-color:#ec008c;">
+                            <span>
+                                <img class="mb-2" style="width:35px; height:35px" src="~/icons/adres.png" />
+                            </span>
+                            <span class="fs-3 ms-1">
+                                Strona
+                            </span>
+                        </a>
+                    }
+                    else
+                    {
+                        <a href="@Html.DisplayFor(model => model.PlacowkaDetail.PlacowkaLista.Strona)" class="btn justify-content-center" style="border-style: solid; border-color:#ec008c;">
+                            <span>
+                                <img class="mb-2" style="width:35px; height:35px" src="~/icons/www.png" />
+                            </span>
+                            <span class="fs-3 ms-1">
+                                Strona
+                            </span>
+                        </a>
+                    }
+                </li>
+            </ul>
+        </div>
+        @*Ocena*@
+        <div class="p-3 rounded mt-5" style="border-style: solid; border-color:#ec008c;">
+            <div class="rounded row">
+                @if (Model.PlacowkaDetail.PlacowkaLista.Ocena.Equals(null))
+                {
+                    <div class="fs-2 text-center">Brak oceny</div>
+                }
+                else
+                {
+                    <div class="text-center fs-2">
+                        Ocena: @Html.DisplayFor(model => Model.PlacowkaDetail.PlacowkaLista.Ocena)/10
+                    </div>
+                }
+            </div>
+            <div class="rounded row mt-2">
+                <a class="btn rounded fs-2 text-decoration-none" style="border:solid; border-color:#ec008c" asp-page="/LegalGuardian/AddGrade" asp-route-id="@Model.PlacowkaDetail.PlacowkaLista.ID">Wystaw ocenę</a>
+            </div>
+        </div>
+    </div>
+
+    @*Przycisk cofania*@
+    @if (User.IsInRole("Zarządzanie placówką"))
+    {
+        <div class="row justify-content-center mt-5 mb-3">
+            <a class="btn rounded fs-2 col-5 text-decoration-none" style="color:#ec008c; border:solid; border-color:#ec008c" asp-page="/Manage/Index">Powrót do Towich przedszkoli</a>
+            <div class="col-1"></div>
+            <a class="btn rounded fs-2 col-5 text-decoration-none" style="color:#ec008c; border:solid; border-color:#ec008c" asp-page="/Institution/Index">Powrót</a>
+        </div>
+    }
+    else
+    {
+        <div class="mt-5"></div>
+        <button class="btn btn-lg rounded" style="border-style: solid; border-color:#ec008c; height:50px">
+            <a class="nav-link" style="color:#ec008c" asp-area="" asp-page="/Institution/Index">Powrót</a>
+        </button>
+    }
+</div>
+
+
+@*Popup window dla numeru telefonu*@
+<div class="overlay" id="PhoneNumber">
+    <div class="wrapper position-relative rounded bg-light" style="margin: 20% auto 0px;padding: 20px; width: 35%;transition: all 5s ease-in-out; border-style: solid; border-color:#ec008c;">
+        <h2 class="mt-0 text-center fs-1 fw-bold" style="color:#ec008c">Masz pytania? Zadzwoń 😁</h2>
+        <a class="close fw-bold fs-3" href="#" style="position: absolute; top: -5px; right: 10px; transition: all 200ms; text-decoration: none; color: #ec008c;">&times;</a>
+        <div class="content" style="max-height: 30%;">
+            <div class="container" style="padding: 20px 0;">
+                <form>
+                    <div class="text-center">
+                        @if (String.IsNullOrEmpty(Model.PlacowkaDetail.PlacowkaLista.Telefon))
+                        {
+
+                        }
+                        else
+                        {
+                            <div class="text-center fs-3">
+                                @Html.DisplayFor(model => model.PlacowkaDetail.PlacowkaLista.Telefon)
+                            </div>
+                        }
+
+                        @if (String.IsNullOrEmpty(Model.PlacowkaDetail.PlacowkaLista.Komorka))
+                        {
+
+                        }
+                        else
+                        {
+                            <div class="text-center fs-3">
+                                @Html.DisplayFor(model => model.PlacowkaDetail.PlacowkaLista.Komorka)
+                            </div>
+                        }
+                    </div>
+                </form>
+            </div>
+        </div>
+    </div>
+</div>
+
+@*Popup window dla adresu mail*@
+<div class="overlay" id="EmailAdress">
+    <div class="wrapper position-relative rounded bg-light" style="margin: 20% auto 0px;padding: 20px;width: 40%;transition: all 5s ease-in-out; border-style: solid; border-color:#ec008c;">
+        <h2 class="mt-0 text-center fs-1 fw-bold" style="color:#ec008c">Masz pytania? Napisz do nas 😁</h2>
+        <a class="close fw-bold fs-3" href="#" style="position: absolute; top: -5px; right: 10px; transition: all 200ms; text-decoration: none; color: #ec008c;">&times;</a>
+        <div class="content" style="max-height: 30%;">
+            <div class="container" style="padding: 20px 0;">
+                <form>
+                    <div class="text-center fs-3">
+                        @Html.DisplayFor(model => model.PlacowkaDetail.PlacowkaLista.Email)
+                    </div>
+                </form>
+            </div>
+        </div>
+    </div>
+</div>
+
+@*Popup window dla adresu placówki*@
+<div class="overlay" id="InstitutionAdress">
+    <div class="wrapper position-relative rounded bg-light" style="margin: 20% auto 0px;padding: 20px;width: 40%;transition: all 5s ease-in-out; border-style: solid; border-color:#ec008c;">
+        <h2 class="mt-0 text-center fs-1 fw-bold" style="color:#ec008c">Tu nas znajdziesz 😁</h2>
+        <a class="close fw-bold fs-3" href="#" style="position: absolute; top: -5px; right: 10px; transition: all 200ms; text-decoration: none; color: #ec008c;">&times;</a>
+        <div class="content" style="max-height: 30%;">
+            <div class="container" style="padding: 20px 0;">
+                <form>
+                    <div class="text-center fs-3">
+                        <div class="d-inline-block" style="background:#ec008c; width: 20px; height:20px; border-radius: 100%"></div>
+                        <div class="d-inline-block">@Html.DisplayFor(Model => Model.PlacowkaDetail.PlacowkaLista.Miejscowosc),</div>
+                        <div class="d-inline-block">@Html.DisplayFor(Model => Model.PlacowkaDetail.PlacowkaLista.Dzielnica),</div>
+                        <div class="d-inline-block">@Html.DisplayFor(Model => Model.PlacowkaDetail.PlacowkaLista.Ulica)</div>
+                        <div class="d-inline-block">@Html.DisplayFor(Model => Model.PlacowkaDetail.PlacowkaLista.Dom)</div>
+                        <div class="d-inline-block">
+                            @if (String.IsNullOrEmpty(Model.PlacowkaDetail.PlacowkaLista.Lokal))
+                            {
+
+                            }
+                            else
+                            {
+                                <p class="d-inline-block">/</p>
+                                @Html.DisplayFor(Model => Model.PlacowkaDetail.PlacowkaLista.Lokal)
+                            }
+                        </div>
+                    </div>
+                </form>
+            </div>
+        </div>
+    </div>
+</div>
+
+@*Popup window dla strony internetowej*@
+<div class="overlay" id="Site">
+    <div class="wrapper position-relative rounded bg-light" style="margin: 20% auto 0px;padding: 20px; width: 35%;transition: all 5s ease-in-out; border-style: solid; border-color:#ec008c;">
+        <h2 class="mt-0 text-center fs-1 fw-bold" style="color:#ec008c">Przepraszamy, ale jeszcze nie mamy naszej strony 😔</h2>
+        <a class="close fw-bold fs-3" href="#" style="position: absolute; top: -5px; right: 10px; transition: all 200ms; text-decoration: none; color: #ec008c;">&times;</a>
+    </div>
+</div>

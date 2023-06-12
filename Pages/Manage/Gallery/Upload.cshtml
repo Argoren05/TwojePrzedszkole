@@ -1,0 +1,43 @@
+﻿@page
+@model kindergartenAPP.Pages.Manage.Gallery.UploadModel
+
+@{
+    var placowkaID = Model.returnID;
+}
+
+<h1 class="text-center fs-1 fw-bold mt-5" style="color:#ec008c">Dodaj nowe zdjęcie</h1>
+<hr style="color:#ec008c" />
+<div class="row justify-content-md-center">
+    <div class="mt-5">
+        <form method="post" enctype="multipart/form-data">
+            <div asp-validation-summary="ModelOnly" class="text-danger"></div>
+            <div class="form-group">
+                <input type="file" accept="image/png, image/jpeg" asp-for="File.Plik" class="form-control" style="border-color:#ec008c"/>
+                <span asp-validation-for="File.Plik" class="text-danger"></span>
+            </div>
+            <div class="form-group mt-4">
+                <label asp-for="File.Opis" class="control-label"></label>
+                <textarea asp-for="File.Opis" class="form-control" rows="4" style="border-color:#ec008c"></textarea>
+                <span asp-validation-for="File.Opis" class="text-danger"></span>
+            </div>
+            <div class="form-group mt-4">
+                <label asp-for="File.Glowny" class="control-label"></label>
+                <input type="checkbox" asp-for="File.Glowny" class="form-check-input ms-3" style="border-color:#ec008c"/>
+                <span asp-validation-for="File.Glowny" class="text-danger"></span>
+            </div>
+            <div class="form-group row justify-content-center mt-5 mb-md-3 m-auto">
+                <button type="submit" class="btn fs-2 rounded col-md-5 mb-3" style="color:#ec008c; border:solid; border-color:#ec008c">Wczytaj nowe zdjęcie</button>
+                <div class="col-md-1"></div>
+                <a class="btn rounded fs-2 col-md-5 text-decoration-none mb-3" style="color:#ec008c; border:solid; border-color:#ec008c" asp-page="./Index"asp-route-id="@placowkaID">Powrót</a>
+            </div>
+        </form>
+    </div>
+</div>
+
+
+
+@section Scripts {
+    @{
+        await Html.RenderPartialAsync("_ValidationScriptsPartial");
+    }
+}

@@ -1,0 +1,61 @@
+﻿@page
+@model kindergartenAPP.Pages.Registration.CreateModel
+
+@{
+}
+
+<h4>Zarejestruj Dziecko</h4>
+<hr />
+<div class="row">
+    <div class="col-md-4">
+        <form method="post">
+            <div class="form-group">
+                <label asp-for="Dziecko.Imie" class="control-label"></label>
+                <input asp-for="Dziecko.Imie" class="form-control" />
+                <span asp-validation-for="Dziecko.Imie" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="Dziecko.Nazwisko" class="control-label"></label>
+                <input asp-for="Dziecko.Nazwisko" class="form-control" />
+                <span asp-validation-for="Dziecko.Nazwisko" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="Dziecko.Pesel" class="control-label"></label>
+                <input asp-for="Dziecko.Pesel" class="form-control" />
+                <span asp-validation-for="Dziecko.Pesel" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="Dziecko.DataUrodzenie" class="control-label"></label>
+                <input type="date" asp-for="Dziecko.DataUrodzenie" class="form-control" />
+                <span asp-validation-for="Dziecko.DataUrodzenie" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="Dziecko.PlecKOD" class="control-label"></label>
+                <select asp-for="Dziecko.PlecKOD" class="form-control" asp-items="ViewBag.Plec"></select>
+            </div>
+            <div class="form-group">
+                <label asp-for="Dziecko.NarodowoscID" class="control-label"></label>
+                <input asp-for="Dziecko.NarodowoscID" class="form-control" />
+                <span asp-validation-for="Dziecko.NarodowoscID" class="text-danger" asp-items="ViewBag.Narodowosc"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="Dziecko.ObywatelstwoID" class="control-label"></label>
+                <input asp-for="Dziecko.ObywatelstwoID" class="form-control" />
+                <span asp-validation-for="Dziecko.ObywatelstwoID" class="text-danger" asp-items="ViewBag.Obywatelstwo"></span>
+            </div>
+            <div class="form-group">
+                <input type="submit" value="Zapisz" class="btn btn-primary" />
+            </div>
+        </form>
+    </div>
+</div>
+
+<div>
+    <a asp-page="Index">Anuluj</a>
+</div>
+
+@section Scripts {
+    @{
+        await Html.RenderPartialAsync("_ValidationScriptsPartial");
+    }
+}

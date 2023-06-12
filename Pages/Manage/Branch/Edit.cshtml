@@ -1,0 +1,41 @@
+﻿@page
+@model kindergartenAPP.Pages.Manage.Branch.EditModel
+
+@{
+    var placowkaID = Model.placowkaOddzial.PlacowkaID;
+}
+
+<h1 class="text-center fs-1 fw-bold mt-5" style="color:#ec008c">Edytuj oddział</h1>
+<hr style="color:#ec008c" />
+<div class="row justify-content-md-center">
+    <div class="col-md-6">
+        <form method="post">
+            <div asp-validation-summary="ModelOnly" class="text-danger"></div>
+            <input type="hidden" asp-for="placowkaOddzial.ID" />
+            <input type="hidden" asp-for="placowkaOddzial.PlacowkaID" />
+
+            <div class="form-group mt-5">
+                <label asp-for="placowkaOddzial.Rok" class="control-label"></label>
+                <input asp-for="placowkaOddzial.Rok" class="form-control" style="border-color: #ec008c" />
+                <span asp-validation-for="placowkaOddzial.Rok" class="text-danger"></span>
+            </div>
+            <div class="form-group mt-5">
+                <label asp-for="placowkaOddzial.Nazwa" class="control-label"></label>
+                <input asp-for="placowkaOddzial.Nazwa" class="form-control" style="border-color: #ec008c" />
+                <span asp-validation-for="placowkaOddzial.Nazwa" class="text-danger"></span>
+            </div>
+            <div class="form-group mt-5">
+                <label asp-for="placowkaOddzial.Limit" class="control-label"></label>
+                <input asp-for="placowkaOddzial.Limit" class="form-control" style="border-color: #ec008c" />
+                <span asp-validation-for="placowkaOddzial.Limit" class="text-danger"></span>
+            </div>
+            
+            <div class="form-group row justify-content-center mt-5 mb-md-3 m-auto">
+                <button type="submit" class="btn fs-2 rounded col-md-5 mb-3" style="color:#ec008c; border:solid; border-color:#ec008c">Zapisz</button>
+                <div class="col-md-1"></div>
+                <a class="btn rounded fs-2 col-md-5 text-decoration-none mb-3" style="color:#ec008c; border:solid; border-color:#ec008c" asp-page="./Index"asp-route-id="@placowkaID">Powrót</a>
+            </div>
+        </form>
+    </div>
+</div>
+

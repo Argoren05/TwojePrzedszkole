@@ -1,0 +1,32 @@
+﻿@page
+@model kindergartenAPP.Pages.News.allNews.DeleteModel
+
+
+<div class="row justify-content-center">
+    <h1 class="text-center fw-bold mt-5" style="color:#ec008c;">Czy na pewno chcesz usunąć tą aktualność?</h1>
+    <div class="row justify-content-center col-10">
+        <div class="row justify-content-center mt-5 fs-2">
+            <div class="raw mb-lg-0 mb-3">
+                @Html.DisplayNameFor(model => model.Aktualnosci.Data)
+                <span>:</span>
+                @Html.DisplayFor(model => model.Aktualnosci.Data)
+            </div>
+            <div class="raw mb-lg-0 mb-3">
+                @Html.DisplayNameFor(model => model.Aktualnosci.Tytul)
+                <span>:</span>
+                @Html.DisplayFor(model => model.Aktualnosci.Tytul)
+            </div>
+            <div class="raw mb-lg-0 mb-3">
+                @Html.DisplayNameFor(model => model.Aktualnosci.Opis)
+                <span>:</span>
+                @Html.DisplayFor(model => model.Aktualnosci.Opis)
+            </div>
+            <form class="row justify-content-center mt-5 mb-md-3 m-auto" method="post">
+                <input type="hidden" asp-for="Aktualnosci.ID" />
+                <button type="submit" class="btn fs-2 rounded col-md-5 mb-3" style="color:red; border:solid; border-color:red">Usuń</button>
+                <div class="col-md-1"></div>
+                <a class="btn rounded fs-2 col-md-5 text-decoration-none mb-3" style="color:#ec008c; border:solid; border-color:#ec008c" asp-page="./Index">Powrót</a>
+            </form>
+        </div>
+    </div>
+</div>

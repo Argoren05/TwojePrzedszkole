@@ -1,0 +1,120 @@
+﻿@page
+@model kindergartenAPP.Pages.Manage.Admission.ListModel
+
+<p>
+    <a asp-page="Create">Create New</a>
+</p>
+<table class="table">
+    <thead>
+        <tr>
+            <th>
+                @Html.DisplayNameFor(model => model.PlacowkaRekrutacjaLista[0].DzieckoID)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.PlacowkaRekrutacjaLista[0].OpiekunID)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.PlacowkaRekrutacjaLista[0].PlacowkaOddzial)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.PlacowkaRekrutacjaLista[0].PlacowkaID)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.PlacowkaRekrutacjaLista[0].Imie)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.PlacowkaRekrutacjaLista[0].Nazwisko)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.PlacowkaRekrutacjaLista[0].Pesel)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.PlacowkaRekrutacjaLista[0].DataUrodzenie)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.PlacowkaRekrutacjaLista[0].PlecKOD)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.PlacowkaRekrutacjaLista[0].Narodowsc)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.PlacowkaRekrutacjaLista[0].Obywatelstwo)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.PlacowkaRekrutacjaLista[0].Plec)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.PlacowkaRekrutacjaLista[0].ImieOpiekun)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.PlacowkaRekrutacjaLista[0].NazwiskoOpiekun)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.PlacowkaRekrutacjaLista[0].Data)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.PlacowkaRekrutacjaLista[0].Akceptacja)
+            </th>
+            <th></th>
+        </tr>
+    </thead>
+    <tbody>
+@foreach (var item in Model.PlacowkaRekrutacjaLista) {
+        <tr>
+            <td>
+                @Html.DisplayFor(modelItem => item.DzieckoID)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.OpiekunID)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.PlacowkaOddzial)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.PlacowkaID)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Imie)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Nazwisko)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Pesel)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.DataUrodzenie)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.PlecKOD)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Narodowsc)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Obywatelstwo)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Plec)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.ImieOpiekun)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.NazwiskoOpiekun)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Data)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Akceptacja)
+            </td>
+            <td>
+                <a asp-page="./Edit" asp-route-id="@item.ID">Edit</a> |
+                <a asp-page="./Details" asp-route-id="@item.ID">Details</a> |
+                <a asp-page="./Delete" asp-route-id="@item.ID">Delete</a>
+            </td>
+        </tr>
+}
+    </tbody>
+</table>

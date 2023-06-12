@@ -1,0 +1,38 @@
+﻿@page
+@model kindergartenAPP.Pages.Manage.Gallery.DeleteModel
+
+@{
+    var placowkaID = Model.PlacowkaPlik.PlacowkaID;
+    var placowkaPlik = Model.PlacowkaPlik;
+}
+
+
+<div class="row justify-content-center">
+    <h1 class="text-center fw-bold mt-5" style="color:#ec008c;">Czy na pewno chcesz usunąć to zdjęcie?</h1>
+    <div class="row justify-content-center">
+        <div class="row justify-content-center col-4 mt-5 fs-2">
+            <div class="raw mb-lg-0 mb-3">
+                @Html.DisplayNameFor(model => placowkaPlik.Nazwa)
+                <span>:</span>
+                @Html.DisplayFor(model => placowkaPlik.Nazwa)
+            </div>
+            <div class="raw mb-lg-0 mb-3">
+                @if(placowkaPlik.Opis != null)
+                {  
+                    @Html.DisplayNameFor(model => placowkaPlik.Opis)
+                    <span>:</span>
+                    @Html.DisplayFor(model => placowkaPlik.Opis)
+                }
+            </div>
+            <div class="raw mt-3 mb-lg-0 mb-3">
+                <img class="img-fluid" style="width: 100%; " src="@Html.DisplayFor(m => Model.PlacowkaPlik.Link)" />
+            </div>
+            <form class="row justify-content-center mt-5 mb-md-3 m-auto" method="post">
+                <input type="hidden" asp-for="PlacowkaPlik.ID" />
+                <button type="submit" class="btn fs-2 rounded col-md-5 mb-3" style="color:red; border:solid; border-color:red">Usuń</button>
+                <div class="col-md-1"></div>
+                <a class="btn rounded fs-2 col-md-5 text-decoration-none mb-3" style="color:#ec008c; border:solid; border-color:#ec008c" asp-page="./Index" asp-route-id="@placowkaID">Powrót</a>
+            </form>
+        </div>
+    </div>
+</div>

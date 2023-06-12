@@ -1,0 +1,82 @@
+﻿@page
+@model kindergartenAPP.Pages.Registration.IndexModel
+
+@{
+}
+
+<div class="row">
+    <div class="col-6">
+        <a asp-page="/Registration/Parent">Popraw dane</a>
+    </div>
+    <div class="col-6">
+        <a asp-page="/Registration/Address">Popraw adres</a>
+    </div>
+    <div class="col-12">
+        <table class="table">
+            <thead>
+                <tr>
+                    <th>
+                        @Html.DisplayNameFor(model => model.Dziecko[0].Placowka.Nazwa)
+                    </th>
+                    <th>
+                        @Html.DisplayNameFor(model => model.Dziecko[0].Imie)
+                    </th>
+                    <th>
+                        @Html.DisplayNameFor(model => model.Dziecko[0].Nazwisko)
+                    </th>
+                    <th>
+                        @Html.DisplayNameFor(model => model.Dziecko[0].Pesel)
+                    </th>
+                    <th>
+                        @Html.DisplayNameFor(model => model.Dziecko[0].DataUrodzenie)
+                    </th>
+                    <th>
+                        @Html.DisplayNameFor(model => model.Dziecko[0].NarodowoscID)
+                    </th>
+                    <th>
+                        @Html.DisplayNameFor(model => model.Dziecko[0].ObywatelstwoID)
+                    </th>
+                    <th>
+                        @Html.DisplayNameFor(model => model.Dziecko[0].PlecKOD)
+                    </th>
+                    <th></th>
+                </tr>
+            </thead>
+            <tbody>
+                @foreach (var item in Model.Dziecko)
+                {
+                    <tr>
+                        <td>
+                            @Html.DisplayFor(modelItem => item.Placowka.Nazwa)
+                        </td>
+                        <td>
+                            @Html.DisplayFor(modelItem => item.Imie)
+                        </td>
+                        <td>
+                            @Html.DisplayFor(modelItem => item.Nazwisko)
+                        </td>
+                        <td>
+                            @Html.DisplayFor(modelItem => item.Pesel)
+                        </td>
+                        <td>
+                            @Html.DisplayFor(modelItem => item.DataUrodzenie)
+                        </td>
+                        <td>
+                            @Html.DisplayFor(modelItem => item.Narodowosc.Opis)
+                        </td>
+                        <td>
+                            @Html.DisplayFor(modelItem => item.Obywatelstwo.Opis)
+                        </td>
+                        <td>
+                            @Html.DisplayFor(modelItem => item.Plec.KOD)
+                        </td>
+                        <td>
+                            <a asp-page="/Children/Edit" asp-route-id="@item.ID">Popraw</a> |
+                            <a asp-page="/Children/Delete" asp-route-id="@item.ID">Usuń</a>
+                        </td>
+                    </tr>
+                }
+            </tbody>
+        </table>
+    </div>
+</div>

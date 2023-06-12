@@ -1,0 +1,45 @@
+﻿@page
+@model kindergartenAPP.Pages.News.allNews.IndexModel
+
+
+@if (User.IsInRole("Administrator"))
+{
+    <p class="mt-5">
+        <a class="btn rounded col-md-3 col-12 text-decoration-none mb-3" style="color:#ec008c; border:solid; border-color:#ec008c" asp-page="./Create">Dodaj nowa aktualność</a>
+    </p>
+}
+
+<div class="mt-5">
+    @foreach (var item in Model.Aktualnosci)
+    {
+        <h1>
+            @Html.DisplayFor(modelItem => item.Tytul)
+            @Html.DisplayFor(modelItem => item.Data)
+        </h1>
+        <div class="text-truncate">
+            @Html.DisplayFor(modelItem => item.Opis)
+        </div>
+        <div class="text-end mb-3">
+            <a asp-page="./Details" asp-route-id="@item.ID" style="color:#ec008c;">
+                <span class="fs-4">
+                    Czytaj więcej 
+                </span>
+                <span class="icon">
+                    <ion-icon name="arrow-forward-outline"></ion-icon>
+                </span>    
+            </a>
+        </div>
+        @if (User.IsInRole("Administrator"))
+        {
+            <div class="row justify-content-center mt-5 mb-md-3 m-auto fs-5">
+                <a class="btn rounded col-md-3 text-decoration-none mb-3" style="color:#ec008c; border:solid; border-color:#ec008c" asp-page="./Edit" asp-route-id="@item.ID">Edytuj</a>
+                <div class="col-md-1"></div>
+                <a class="btn rounded col-md-3 text-decoration-none mb-3" style="color:#ec008c; border:solid; border-color:#ec008c" asp-page="./Delete" asp-route-id="@item.ID">Usuń</a>
+            </div>
+        }
+        
+    }
+</div>
+<div class="form-group row justify-content-center mt-5 mb-md-3 m-auto">
+    <a class="btn rounded fs-2 col-md-5 text-decoration-none mb-3" style="color:#ec008c; border:solid; border-color:#ec008c" asp-page="/News/Index">Powrót</a>
+</div>

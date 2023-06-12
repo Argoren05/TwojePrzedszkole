@@ -1,0 +1,98 @@
+﻿@page
+@model kindergartenAPP.Pages.Manage.EditModel
+
+@{
+}
+
+<div class="row">
+    <div class="col-md-6 offset-3">
+        <form method="post">
+            <div asp-validation-summary="ModelOnly" class="text-danger"></div>
+            <input type="hidden" asp-for="Placowka.ID" />
+            <input type="hidden" asp-for="Placowka.UzytkownikID" />
+            <div class="form-group">
+                <label asp-for="Placowka.PlacowkaTypID" class="control-label"></label>
+                <select asp-for="Placowka.PlacowkaTypID" class="form-control" asp-items="ViewBag.PlacowkaTypID"></select>
+                <span asp-validation-for="Placowka.PlacowkaTypID" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="Placowka.Nazwa" class="control-label"></label>
+                <input asp-for="Placowka.Nazwa" class="form-control" />
+                <span asp-validation-for="Placowka.Nazwa" class="text-danger"></span>
+            </div>
+           <div class="form-group">
+                <label asp-for="Placowka.Opis" class="control-label"></label>
+                <textarea style="height:180px;" asp-for="Placowka.Opis" class="form-control">
+                </textarea>
+            </div>
+            <div class="form-group">
+                <label asp-for="Placowka.Udogodnienia" class="control-label"></label>
+                <textarea style="height:180px;" asp-for="Placowka.Udogodnienia" class="form-control">
+                </textarea>
+            </div>
+            <div class="form-group">
+                <label asp-for="Placowka.Program" class="control-label"></label>
+                <textarea style="height:180px;" asp-for="Placowka.Program" class="form-control">
+                </textarea>
+            </div>
+            <div class="form-group">
+                <label asp-for="Placowka.MiejscowoscID" class="control-label"></label>
+                <select asp-for="Placowka.MiejscowoscID" class="form-control" asp-items="ViewBag.MiejscowoscLista">
+                </select>
+                <span asp-validation-for="Placowka.MiejscowoscID" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="Placowka.Dzielnica" class="control-label"></label>
+                <input asp-for="Placowka.Dzielnica" class="form-control" />
+                <span asp-validation-for="Placowka.Dzielnica" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="Placowka.Ulica" class="control-label"></label>
+                <input asp-for="Placowka.Ulica" class="form-control" />
+                <span asp-validation-for="Placowka.Ulica" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="Placowka.Dom" class="control-label"></label>
+                <input asp-for="Placowka.Dom" class="form-control" />
+                <span asp-validation-for="Placowka.Dom" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="Placowka.Lokal" class="control-label"></label>
+                <input asp-for="Placowka.Lokal" class="form-control" />
+                <span asp-validation-for="Placowka.Lokal" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="Placowka.Telefon" class="control-label"></label>
+                <input asp-for="Placowka.Telefon" class="form-control" />
+                <span asp-validation-for="Placowka.Telefon" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="Placowka.Komorka" class="control-label"></label>
+                <input asp-for="Placowka.Komorka" class="form-control" />
+                <span asp-validation-for="Placowka.Komorka" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="Placowka.Email" class="control-label"></label>
+                <input type="email" asp-for="Placowka.Email" class="form-control" />
+                <span asp-validation-for="Placowka.Email" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="Placowka.Strona" class="control-label"></label>
+                <input type="url" placeholder="https://example.com" pattern="https://.*" asp-for="Placowka.Strona" class="form-control" />
+                <span asp-validation-for="Placowka.Strona" class="text-danger"></span>
+            </div>
+            <div class="form-group mt-2">
+                <div class="d-inline-block">
+                    <a asp-page="/Manage/Index">Anuluj</a>
+                </div>
+                <div class="d-inline-block">
+                    <input type="submit" value="Zapisz" class="btn btn-primary" />
+                </div>
+            </div>
+        </form>
+    </div>
+</div>
+
+@section Scripts {
+    @{await Html.RenderPartialAsync("_ValidationScriptsPartial");}
+}

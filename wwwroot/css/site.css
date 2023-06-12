@@ -1,0 +1,169 @@
+html {
+    font-size: 14px;
+}
+
+@media (min-width: 768px) {
+    html {
+        font-size: 16px;
+    }
+}
+
+.btn:focus, .btn:active:focus, .btn-link.nav-link:focus, .form-control:focus, .form-check-input:focus {
+    box-shadow: 0 0 0 0.1rem white, 0 0 0 0.25rem #258cfb;
+}
+
+html {
+    position: relative;
+    min-height: 100%;
+}
+
+/*body {
+    margin-bottom: 60px;
+}*/
+
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-family: 'Poppins', sans-serif;
+}
+
+    /*Pasek nawigacyjny*/
+
+/*    .conteiner {
+        width: 100%;
+        display: flex;
+        position: relative;
+        background: white;
+    }*/
+
+    /*.logo {
+    width: 400px;
+    height: 50px;
+    cursor: pointer;
+    margin: 10px 0px 0px -200px;
+}*/
+
+    /*.buttons {
+    flex: 1;
+    text-align: right;
+    display: inline-block;
+    position: absolute;
+    right: 5px;
+    padding-right: 5%;
+}*/
+
+.buttons ul li {
+    list-style: none;
+    display: inline-block;
+    padding: 10px 25px;
+    margin: 10px 0px;
+    color: #000;
+    font-weight: 500;
+    position: relative;
+    z-index: 2;
+    transition: color 0.5s;
+}
+
+    .buttons ul li::after {
+    content: '';
+    background: #ec008c;
+    width: 80%;
+    height: 70%;
+    border-radius: 30px;
+    position: absolute;
+    top: 70%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    z-index: -1;
+    opacity: 0;
+    transition: top 0.5s, opacity 0.5s;
+}
+    .buttons ul li:hover::after {
+    top: 50%;
+    opacity: 1;
+}
+
+    .buttons ul li a {
+    text-decoration: none;
+    color: black;
+}
+
+    /*Popup window*/
+
+    .overlay {
+        position: fixed;
+        top: 0;
+        bottom: 0;
+        left: 0;
+        right: 0;
+        background: rgba(0, 0, 0, 0.8);
+        transition: opacity 500ms;
+        visibility: hidden;
+        opacity: 0;
+        height: 100vh;
+        width: 100vw;
+    }
+
+    .overlay:target {
+        visibility: visible;
+        opacity: 1;
+        z-index: 99;
+    }
+
+    /*Zarzadzanie placowka*/
+
+    .navlist {
+        display: inline-block;
+        width: 600px;
+    }
+
+    .navlist li {
+        position: relative;
+        list-style: none;
+        width: 70px;
+        height: 70px;
+        z-index: 1;
+        display: inline-block
+    }
+
+    .navlist li a {
+        position: relative;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        flex-direction: column;
+        width: 100%;
+        text-align: center;
+        font-weight: 500;
+    }
+
+    .navlist li a .icon {
+        position: relative;
+        display: block;
+        line-height: 75px;
+        font-size: 1.5em;
+        text-align: center;
+        transition: 0.5s;
+        color: #ec008c;
+    }
+
+    .navlist li:hover a .icon {
+        transform: translateY(-35px);
+    }
+    
+    .navlist li a .text {
+        position: absolute;
+        color: #ec008c;
+        font-weight: 400;
+        font-size: 0.75em;
+        letter-spacing: 0.05em;
+        transition: 0.05s;
+        opacity: 0;
+        transform: translateY(20px);
+    }
+
+    .navlist li:hover a .text {
+        opacity: 1;
+        transform: translateY(10px);
+    }

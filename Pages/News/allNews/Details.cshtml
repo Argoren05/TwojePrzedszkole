@@ -1,0 +1,10 @@
+﻿@page
+@model kindergartenAPP.Pages.News.allNews.DetailsModel
+
+<div class="mt-5">
+    <h1 class="text-center"> @Html.DisplayFor(model => model.Aktualnosci.Tytul)</h1>
+    <div class="row mt-5">
+        @Html.DisplayFor(model => model.Aktualnosci.Opis)
+    </div>
+    <a class="btn rounded text-decoration-none mb-3 mt-5 col-12" style="color:#ec008c; border:solid; border-color:#ec008c" asp-page="./Index">Powrót</a>
+</div>

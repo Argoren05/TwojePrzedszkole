@@ -1,0 +1,58 @@
+﻿@page
+@model kindergartenAPP.Pages.Manage.Gallery.IndexModel
+
+@{
+    
+}
+
+<div class="row justify-content-center">
+    <h1 class="text-center fw-bold mt-5" style="color:#ec008c">Twoje zdjęcia</h1>
+    <div class="row mt-md-5">
+        @foreach (var item in Model.placowkaPlik)
+        {
+            <div class="row fs-3">
+                <div class="col-lg-1 col-2">
+                    <img class="img-fluid" src="@Html.DisplayFor(m => item.Link)" />
+                </div>
+                <div class="col-lg-2">
+                    @Html.DisplayFor(modelItem => item.Nazwa)
+                </div>
+                <div class="col-lg-2">
+                    @Html.DisplayFor(modelItem => item.Data)
+                </div>
+                <div class="col-lg-2">
+                    @if(item.Opis == null)
+                    {
+                        <span>Brak opisu</span>
+                    }
+                    else
+                    {
+                        @Html.DisplayFor(modelItem => item.Opis)
+                    }
+                </div>
+                
+                    @if (item.Glowny == true)
+                    {
+                    <div class="col-lg-2">
+                        <span>Główne zdjęcie</span>
+                    </div>
+                    }
+                
+                <div class="col-lg-2">
+                    <a class="text-decoration-none" style="color:#ec008c" asp-page="./Edit" asp-route-id="@item.ID">Edit</a> |
+                    <a class="text-decoration-none" style="color:#ec008c" asp-page="./Delete" asp-route-id="@item.ID">Delete</a>
+                </div>
+            </div>
+            <div class="col-lg-12 col-6 rounded-circle mb-3" style="background:#ec008c; height:10px;"></div>
+        }
+    </div>
+</div>
+<div class="row justify-content-center mt-5 mb-md-3 m-auto">
+    <button type="submit" class="btn fs-2 rounded col-md-5 mb-3" style="color:#ec008c; border:solid; border-color:#ec008c">
+        <a class="nav-link" style="color:#ec008c" asp-page="./Upload" asp-route-id="@Model.placowkaID">Dodaj nowe zdjęcie</a>
+    </button>
+    <div class="col-md-1"></div>
+    <button type="submit" class="btn fs-2 rounded col-md-5 mb-3" style="color:#ec008c; border:solid; border-color:#ec008c">
+        <a class="nav-link" style="color:#ec008c" asp-area="" asp-page="/Manage/Index">Powrót</a>
+    </button>
+</div>

@@ -1,0 +1,98 @@
+﻿@page
+@model kindergartenAPP.Pages.Parent.IndexModel
+
+@{
+    var opiekun = Model.opiekun[0];
+    //var miejscowosc = Model.miejscowosc;
+}
+
+<div class="row justify-content-center">
+    <div class="row justify-content-center col-9 mt-5 rounded" style="border-style: solid;border-color:#ec008c ">
+       <h1 class="text-center fw-bold mt-5" style="color:#ec008c;">Twoje dane</h1>
+       <ul class="row justify-content-center mt-3">
+            <li class="row mt-3">
+                <h3 class="col-md-6">
+                    @Html.DisplayNameFor(model => opiekun.Imie)
+                </h3>
+                <div class="col-md-6 fs-5">
+                    @Html.DisplayFor(model => opiekun.Imie)
+                </div>
+                <div class="col-md-12 rounded-circle mt-1" style="background:#ec008c; height:10px;"></div>
+            </li>
+            <li class="row mt-3">
+                <h3 class="col-md-6">
+                    @Html.DisplayNameFor(model => opiekun.Nazwisko)
+                </h3>
+                <div class="col-md-6 fs-5">
+                    @Html.DisplayFor(model => opiekun.Nazwisko)
+                </div>
+                <div class="col-md-12 rounded-circle mt-1" style="background:#ec008c; height:10px;"></div>
+            </li>
+            <li class=" row mt-3">
+                <h3 class="col-md-6">
+                    @Html.DisplayNameFor(model => opiekun.MiejscowoscID)
+                </h3>
+                <div class="col-md-6 fs-5">
+                    @Html.DisplayFor(model => opiekun.Miejscowosc.Miejscowosc)
+                </div>
+                <div class="col-md-12 rounded-circle mt-1" style="background:#ec008c; height:10px;"></div>
+            </li>
+            <li class="row mt-3">
+                <h3 class="col-md-6">
+                    @Html.DisplayNameFor(model => opiekun.Ulica)
+                </h3>
+                <div class="col-md-6 fs-5">
+                    @Html.DisplayFor(model => opiekun.Ulica)
+                </div>
+                <div class="col-md-12 rounded-circle mt-1" style="background:#ec008c; height:10px;"></div>
+            </li>
+            <li class="row mt-3">
+                <h3 class="col-md-6">
+                    @Html.DisplayNameFor(model => opiekun.Dom)
+                </h3>
+                <div class="col-md-6 fs-5">
+                    @Html.DisplayFor(model => opiekun.Dom)
+                </div>
+                <div class="col-md-12 rounded-circle mt-1" style="background:#ec008c; height:10px;"></div>
+            </li>
+            <li class="row mt-3">
+                <h3 class="col-md-6">
+                    @Html.DisplayNameFor(model => opiekun.Lokal)
+                </h3>
+                <div class="col-md-6 fs-5">
+                    @Html.DisplayFor(model => opiekun.Lokal)
+                </div>
+                <div class="col-md-12 rounded-circle mt-1" style="background:#ec008c; height:10px;"></div>
+            </li>
+            <li class="row mt-3">
+                <h3 class="col-md-6">
+                    @Html.DisplayNameFor(model => opiekun.Telefon)
+                </h3>
+                <div class="col-md-6 fs-5">
+                    @Html.DisplayFor(model => opiekun.Telefon)
+                </div>
+                <div class="col-md-12 rounded-circle mt-1" style="background:#ec008c; height:10px;"></div>
+            </li>
+            <li class="row mt-3">
+                <h3 class="col-md-6">
+                    @Html.DisplayNameFor(model => opiekun.Komorka)
+                </h3>
+                <div class="col-md-6 fs-5">
+                    @Html.DisplayFor(model => opiekun.Komorka)
+                </div>
+                <div class="col-md-12 rounded-circle mt-1" style="background:#ec008c; height:10px;"></div>
+            </li>
+            <li class="row mt-3">
+                <h3 class="col-lg-6">
+                    @Html.DisplayNameFor(model => opiekun.Email)
+                </h3>
+                <div class="col-lg-6 fs-5">
+                    @Html.DisplayFor(model => opiekun.Email)
+                </div>
+                <div class="col-lg-12 rounded-circle mt-1" style="background:#ec008c; height:10px;"></div>
+            </li>
+            
+            <a class="btn mt-3 fs-3 rounded" asp-page="./Edit" asp-route-id="@opiekun.ID" style="color:#ec008c; border:solid; border-color:#ec008c">Edytuj swoje dane</a>
+       </ul>
+    </div>
+</div>

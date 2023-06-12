@@ -1,0 +1,168 @@
+﻿@page
+@model kindergartenAPP.Pages.News._InstitutionPartialViewModel
+
+<p>
+    <a asp-page="Create">Create New</a>
+</p>
+<table class="table">
+    <thead>
+        <tr>
+            <th>
+                @Html.DisplayNameFor(model => model.PlacowkaLista[0].Nazwa)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.PlacowkaLista[0].Opis)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.PlacowkaLista[0].PlacowkaTypID)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.PlacowkaLista[0].PlacowkaTyp)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.PlacowkaLista[0].Miejscowosc)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.PlacowkaLista[0].Gmina)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.PlacowkaLista[0].Powiat)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.PlacowkaLista[0].Wojewodztwo)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.PlacowkaLista[0].Dzielnica)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.PlacowkaLista[0].Ulica)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.PlacowkaLista[0].Dom)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.PlacowkaLista[0].Lokal)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.PlacowkaLista[0].Zdjecie)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.PlacowkaLista[0].Kolejnosc)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.PlacowkaLista[0].Ocena)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.PlacowkaLista[0].Limit)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.PlacowkaLista[0].Zgloszono)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.PlacowkaLista[0].Wolne)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.PlacowkaLista[0].Udogodnienia)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.PlacowkaLista[0].Program)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.PlacowkaLista[0].Telefon)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.PlacowkaLista[0].Komorka)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.PlacowkaLista[0].Email)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.PlacowkaLista[0].Strona)
+            </th>
+            <th></th>
+        </tr>
+    </thead>
+    <tbody>
+@foreach (var item in Model.PlacowkaLista) {
+        <tr>
+            <td>
+                @Html.DisplayFor(modelItem => item.Nazwa)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Opis)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.PlacowkaTypID)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.PlacowkaTyp)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Miejscowosc)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Gmina)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Powiat)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Wojewodztwo)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Dzielnica)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Ulica)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Dom)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Lokal)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Zdjecie)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Kolejnosc)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Ocena)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Limit)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Zgloszono)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Wolne)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Udogodnienia)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Program)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Telefon)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Komorka)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Email)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Strona)
+            </td>
+            <td>
+                <a asp-page="./Edit" asp-route-id="@item.ID">Edit</a> |
+                <a asp-page="./Details" asp-route-id="@item.ID">Details</a> |
+                <a asp-page="./Delete" asp-route-id="@item.ID">Delete</a>
+            </td>
+        </tr>
+}
+    </tbody>
+</table>

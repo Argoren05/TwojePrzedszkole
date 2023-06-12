@@ -1,0 +1,38 @@
+﻿@page
+@model kindergartenAPP.Pages.Manage.Branch.DeleteModel
+
+@{
+    var placowkaID = Model.placowkaOddzial.PlacowkaID;
+    var placowkaOddzial = Model.placowkaOddzial;
+}
+
+
+<div class="row justify-content-center">
+    <h1 class="text-center fw-bold mt-5" style="color:#ec008c;">Czy na pewno chcesz usunąć ten oddział?</h1>
+    <div class="row justify-content-center">
+        <div class="row justify-content-center col-4 mt-5 fs-2">
+            <div class="raw mb-lg-0 mb-3">
+                @Html.DisplayNameFor(model => placowkaOddzial.Nazwa)
+                <span>:</span>
+                @Html.DisplayFor(model => placowkaOddzial.Nazwa)
+            </div>
+            <div class="raw mb-lg-0 mb-3">
+                @Html.DisplayNameFor(model => placowkaOddzial.Rok)
+                <span>:</span>
+                @Html.DisplayFor(model => placowkaOddzial.Rok)
+            </div>
+            <div class="raw mb-lg-0 mb-3">
+                @Html.DisplayNameFor(model => placowkaOddzial.Limit)
+                <span>:</span>
+                @Html.DisplayFor(model => placowkaOddzial.Limit)
+            </div>
+            <form class="row justify-content-center mt-5 mb-md-3 m-auto" method="post">
+                <input type="hidden" asp-for="placowkaOddzial.ID" />
+                <button type="submit" class="btn fs-2 rounded col-md-5 mb-3" style="color:red; border:solid; border-color:red">Usuń</button>
+                <div class="col-md-1"></div>
+                <a class="btn rounded fs-2 col-md-5 text-decoration-none mb-3" style="color:#ec008c; border:solid; border-color:#ec008c" asp-page="./Index" asp-route-id="@placowkaID">Powrót</a>
+            </form>
+        </div>
+    </div>
+</div>
+

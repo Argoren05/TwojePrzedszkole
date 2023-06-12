@@ -1,0 +1,59 @@
+﻿@page
+@model kindergartenAPP.Pages.Manage.Admission.IndexModel
+
+@{
+}
+<div class="row justify-content-center">
+    <h1 class="text-center fw-bold mt-5" style="color:#ec008c">Wnioski</h1>
+    <div class="row mt-5">
+        <ul>
+            @foreach (var item in Model.PlacowkaRekrutacjaLista)
+            {
+                <li class="fs-3">
+                    <div class="row ">
+                        <div class="col-sm">
+                            @Html.DisplayFor(modelItem => item.Nazwa)
+                        </div>
+                        <div class="col-sm">
+                            @Html.DisplayFor(modelItem => item.Imie)
+                            @Html.DisplayFor(modelItem => item.Nazwisko)
+                        </div>
+                        <div class="col-sm">
+                            @Html.DisplayFor(modelItem => item.Pesel)
+                        </div>
+                        <div class="col-md-5">
+                            @if (item.Akceptacja == null)
+                            {
+                                <span>Trwa podjęcie decyzji</span>
+                            }
+                            else if (item.Akceptacja == false)
+                            {
+                                <div class="text-danger">
+                                    @Html.DisplayFor(modelItem => item.Data)
+                                    <span>Wniosek odrzucony</span>
+                                </div>
+                            }
+                            else if (item.Akceptacja == true)
+                            {
+                                <div class="text-success">
+                                    @Html.DisplayFor(modelItem => item.Data)
+                                    <span>Wniosek zaakceptowany</span>
+                                </div>
+                            }
+                        </div>
+                    </div>
+                    <div class="row justify-content-center mt-5 mb-3">
+                        <a class="btn rounded col-md-5 text-decoration-none mb-3" style="color:#ec008c; border:solid; border-color:#ec008c" asp-page="./Accept" asp-route-id="@item.ID">Akceptuj</a>
+                        <div class="col-md-1"></div>
+                        <a class="btn rounded col-md-5 text-decoration-none mb-3" style="color:#ec008c; border:solid; border-color:#ec008c" asp-page="./Reject" asp-route-id="@item.ID">Odrzuć</a>
+                    </div>
+                </li>
+            }
+        </ul>
+    </div>
+</div>
+<div class="row justify-content-center mt-5 mb-md-3 m-auto">
+    <button type="submit" class="btn fs-2 rounded mb-3" style="color:#ec008c; border:solid; border-color:#ec008c">
+        <a class="nav-link" style="color:#ec008c" asp-area="" asp-page="/Manage/Index">Powrót</a>
+    </button>
+</div>

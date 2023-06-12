@@ -1,0 +1,51 @@
+﻿@page
+@model kindergartenAPP.Pages.News.IndexModel
+
+<h1 class="mt-5" style="color:#ec008c">Nowe przedszkola</h1>
+<div class="mt-5 row justify-content-center">
+    @foreach (var item in Model.PlacowkaLista.Take(6))
+    {
+        <a asp-page="/Institution/Details" asp-route-id="@item.ID" class="col-md-3 me-md-5 mx-0 mb-4 row justify-content-center text-decoration-none" style="border-style: solid; border-color:#ec008c;">
+            <div class="col-6 mt-2">
+                <img class="img-thumbnail img-fluid" src="@Html.DisplayFor(m => item.Zdjecie)" />
+            </div>
+            <h3 class="text-center mt-2 text-dark">
+                @Html.DisplayFor(m => item.Nazwa)
+            </h3>
+        </a>
+    }
+    <div class="row justify-content-center mt-5 me-md-5 mb-md-3 m-auto">
+        <a class="btn rounded col-md-4 text-decoration-none mb-3 fs-3" style="color:#ec008c; border:solid; border-color:#ec008c" asp-page="/Institution/Index">Zobacz więcej</a>
+    </div>
+</div>
+
+<h1 class="mt-5" style="color:#ec008c">Nowości</h1>
+<div class="mt-5 mx-md-0 mx-auto row justify-content-center">
+    <ul class="px-md-5">
+        @foreach (var item in Model.Aktualnosci.Take(6))
+        {
+            <li class="fs-3">
+                <div >
+                    @Html.DisplayFor(modelItem => item.Tytul)
+                    @Html.DisplayFor(modelItem => item.Data)
+                </div>
+                <div class="text-truncate fs-4">
+                    @Html.DisplayFor(modelItem => item.Opis)
+                </div>
+                <div class="text-end mb-3">
+                    <a asp-page="./allNews/Details" asp-route-id="@item.ID" style="color:#ec008c;">
+                        <span class="fs-4">
+                            Czytaj więcej
+                        </span>
+                        <span class="icon fs-5">
+                            <ion-icon name="arrow-forward-outline"></ion-icon>
+                        </span>
+                    </a>
+                </div>
+            </li>
+        }
+    </ul>
+    <div class="row justify-content-center mt-5 mb-md-3 me-md-5 m-auto ">
+        <a class="btn rounded col-md-4 text-decoration-none mb-3 fs-3" style="color:#ec008c; border:solid; border-color:#ec008c" asp-page="./allNews/Index">Zobacz więcej</a>
+    </div>
+</div>

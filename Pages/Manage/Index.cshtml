@@ -1,0 +1,72 @@
+﻿@page
+@model kindergartenAPP.Pages.Manage.IndexModel
+
+@{
+    ViewData["Title"] = "Placówka";
+}
+
+<div class="row">
+    <h1 class="text-center fw-bold mt-5" style="color:#ec008c">Twoje Placówki</h1>
+    @foreach(var p in Model.placowka)
+    {
+        <div class="row mt-5">
+            <div class="mt-2 ms-2 fs-3 col-md-6">@Html.DisplayFor(m => p.Nazwa)</div>
+            <ul class="navlist col-md-6 mt-md-0 mt-3">
+                <li class="list">
+                    <a asp-page="./Edit" asp-route-id="@p.ID">
+                        <span class="icon">
+                            <ion-icon name="document-text-outline"></ion-icon>
+                        </span>
+                        <span class="text">Popraw dane</span>
+                    </a>
+                </li>
+                <li class="list">
+                    <a asp-page="./Branch/Index" asp-route-id="@p.ID">
+                        <span class="icon">
+                            <ion-icon name="file-tray-full-outline"></ion-icon>
+                        </span>
+                        <span class="text">Oddziały i limity</span>
+                    </a>
+                </li>
+                <li class="list">
+                    <a asp-page="./Gallery/Index" asp-route-id="@p.ID">
+                        <span class="icon">
+                            <ion-icon name="image-outline"></ion-icon>
+                        </span>
+                        <span class="text">Galeria</span>
+                    </a>
+                </li>
+                <li class="list">
+                    <a asp-page="/Institution/Details" asp-route-id="@p.ID">
+                        <span class="icon">
+                            <ion-icon name="newspaper-outline"></ion-icon>
+                        </span>
+                        <span class="text">Informacje</span>
+                    </a>
+                </li>
+                <li class="list">
+                    <a asp-page="./Admission/Index" asp-route-id="@p.ID">
+                        <span class="icon">
+                            <ion-icon name="clipboard-outline"></ion-icon>
+                        </span>
+                        <span class="text">Zgłoszenia</span>
+                    </a>
+                </li>
+                <li class="list">
+                    <a asp-page="./Delete" asp-route-id="@p.ID">
+                        <span class="icon">
+                            <ion-icon name="trash-outline"></ion-icon>
+                        </span>
+                        <span class="text">Usuń</span>
+                    </a>
+                </li>
+            </ul>
+            <div class="col-lg-12 col-6 rounded-circle mb-3" style="background:#ec008c; height:10px;"></div>
+        </div>
+    }
+    <button class="btn btn-lg text-center fs-1 mt-5 rounded" style="border-style: solid; border-color:#ec008c;">
+        <a class="nav-link" style="color:#ec008c" asp-area="" asp-page="./Add">Dodaj placówkę</a>
+    </button>
+</div>
+
+

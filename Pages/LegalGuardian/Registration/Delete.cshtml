@@ -1,0 +1,51 @@
+﻿@page
+@model kindergartenAPP.Pages.LegalGuardian.Registration.DeleteModel
+
+@{
+    var dziecko = Model.Dziecko;
+}
+
+<div class="row justify-content-center">
+    <h1 class="text-center fw-bold mt-5" style="color:#ec008c;">Czy na pewno chcesz usunąć ten wniosek?</h1>
+    <div class="row justify-content-center col-md-5">
+        <div class="row justify-content-center mt-5 fs-2">
+            <div class="raw mb-lg-0 mb-3">
+                <span>Imię i nazwisko :</span>
+                @Html.DisplayFor(model => dziecko.Imie)
+                @Html.DisplayFor(model => dziecko.Nazwisko)
+            </div>
+            <div class="raw mb-lg-0 mb-3">
+                @Html.DisplayNameFor(model => dziecko.Pesel)
+                <span>:</span>
+                @Html.DisplayFor(model => dziecko.Pesel)
+            </div>
+            <div class="raw mb-lg-0 mb-3">
+                @Html.DisplayNameFor(model => dziecko.DataUrodzenie)
+                <span>:</span>
+                @Html.DisplayFor(model => dziecko.DataUrodzenie)
+            </div>
+            <div class="raw mb-lg-0 mb-3">
+                @Html.DisplayNameFor(model => dziecko.Plec)
+                <span>:</span>
+                @Html.DisplayFor(model => dziecko.Plec.Opis)
+            </div>
+            <div class="raw mb-lg-0 mb-3">
+                @Html.DisplayNameFor(model => dziecko.Obywatelstwo)
+                <span>:</span>
+                @Html.DisplayFor(model => dziecko.Obywatelstwo.Opis)
+            </div>
+            <div class="raw mb-lg-0 mb-3">
+                @Html.DisplayNameFor(model => dziecko.Narodowosc)
+                <span>:</span>
+                @Html.DisplayFor(model => dziecko.Narodowosc.Opis)
+            </div>
+            
+            <form class="row justify-content-center mt-5 mb-md-3 m-auto" method="post">
+                <input type="hidden" asp-for="Dziecko.ID" />
+                <button type="submit" class="btn fs-2 rounded col-md-5 mb-3" style="color:red; border:solid; border-color:red">Usuń</button>
+                <div class="col-md-1"></div>
+                <a class="btn rounded fs-2 col-md-5 text-decoration-none mb-3" style="color:#ec008c; border:solid; border-color:#ec008c" asp-page="./Index">Powrót</a>
+            </form>
+        </div>
+    </div>
+</div>

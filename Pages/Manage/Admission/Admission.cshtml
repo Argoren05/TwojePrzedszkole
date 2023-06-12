@@ -1,0 +1,87 @@
+﻿@page
+@model kindergartenAPP.Pages.Manage.AdmissionModel
+
+@{
+}
+
+<table class="table">
+    <thead>
+        <tr>
+            <th>
+                @Html.DisplayNameFor(model => model.PlacowkaRekrutacjaLista[0].Imie)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.PlacowkaRekrutacjaLista[0].Nazwisko)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.PlacowkaRekrutacjaLista[0].Pesel)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.PlacowkaRekrutacjaLista[0].DataUrodzenie)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.PlacowkaRekrutacjaLista[0].Narodowsc)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.PlacowkaRekrutacjaLista[0].Plec)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.PlacowkaRekrutacjaLista[0].ImieOpiekun)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.PlacowkaRekrutacjaLista[0].NazwiskoOpiekun)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.PlacowkaRekrutacjaLista[0].Data)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.PlacowkaRekrutacjaLista[0].Akceptacja)
+            </th>
+            <th></th>
+        </tr>
+    </thead>
+    <tbody>
+        @foreach (var item in Model.PlacowkaRekrutacjaLista)
+        {
+            <tr>
+                <td>
+                    @Html.DisplayFor(modelItem => item.Imie)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.Nazwisko)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.Pesel)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.DataUrodzenie)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.PlecKOD)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.Narodowsc)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.Plec)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.ImieOpiekun)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.NazwiskoOpiekun)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.Data)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.Akceptacja)
+                </td>
+                <td>
+                    <a asp-page="/Manage/Accept" asp-route-id="@item.ID">Akceptuj</a> |
+                    <a asp-page="/Manage/Reject" asp-route-id="@item.ID">Odrzuć</a> 
+                </td>
+            </tr>
+        }
+    </tbody>
+</table>

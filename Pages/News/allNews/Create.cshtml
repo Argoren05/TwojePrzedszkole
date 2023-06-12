@@ -1,0 +1,30 @@
+﻿@page
+@model kindergartenAPP.Pages.News.allNews.CreateModel
+
+
+<h1 class="text-center fs-1 fw-bold mt-5" style="color:#ec008c">Dodaj nową aktualność</h1>
+<hr style="color:#ec008c" />
+<div class="row justify-content-md-center">
+    <div class="col-md-6">
+        <form method="post">
+            <div asp-validation-summary="ModelOnly" class="text-danger"></div>
+            <input asp-for="Aktualnosci.Data" type="hidden" class="form-control" />
+            <div class="form-group mt-5">
+                <label asp-for="Aktualnosci.Tytul" class="control-label"></label>
+                <input asp-for="Aktualnosci.Tytul" class="form-control" style="border-color: #ec008c" />
+                <span asp-validation-for="Aktualnosci.Tytul" class="text-danger"></span>
+            </div>
+            <div class="form-group mt-5">
+                <label asp-for="Aktualnosci.Opis" class="control-label"></label>
+                <textarea asp-for="Aktualnosci.Opis" class="form-control" style="border-color: #ec008c" rows="6"></textarea>
+                <span asp-validation-for="Aktualnosci.Opis" class="text-danger"></span>
+            </div>
+            <div class="form-group row justify-content-center mt-5 mb-md-3 m-auto">
+                <button type="submit" class="btn fs-2 rounded col-md-5 mb-3" style="color:#ec008c; border:solid; border-color:#ec008c">Dodaj</button>
+                <div class="col-md-1"></div>
+                <a class="btn rounded fs-2 col-md-5 text-decoration-none mb-3" style="color:#ec008c; border:solid; border-color:#ec008c" asp-page="./Index">Powrót</a>
+            </div>
+        </form>
+    </div>
+</div>
+

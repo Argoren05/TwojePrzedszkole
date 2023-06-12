@@ -1,0 +1,38 @@
+﻿@page
+@model kindergartenAPP.Pages.Manage.Branch.IndexModel
+
+
+
+<div class="row justify-content-center">
+    <h1 class="text-center fs-1 fw-bold mt-5" style="color:#ec008c">Oddziały</h1>
+    <div class="row mt-5">
+        @foreach (var item in Model.PlacowkaOddzial)
+        {
+            <div class="row fs-3">
+                <div class="col-sm">
+                    @Html.DisplayFor(modelItem => item.Rok)
+                </div>
+                <div class="col-sm">
+                    @Html.DisplayFor(modelItem => item.Nazwa)
+                </div>
+                <div class="col-sm">
+                    @Html.DisplayFor(modelItem => item.Limit)
+                </div>
+                <div class="col-sm">
+                    <a class="text-decoration-none" style="color:#ec008c" asp-page="./Edit" asp-route-id="@item.ID">Edit</a> |
+                    <a class="text-decoration-none" style="color:#ec008c" asp-page="./Delete" asp-route-id="@item.ID">Delete</a>
+                </div>
+            </div>
+            <div class="col-sm-12 col-6 rounded-circle mb-3" style="background:#ec008c; height:10px;"></div>
+        }
+    </div>
+</div>
+<div class="row justify-content-center mt-5 mb-md-3 m-auto">
+    <button type="submit" class="btn fs-2 rounded col-md-5 mb-3" style="color:#ec008c; border:solid; border-color:#ec008c">
+        <a class="nav-link" style="color:#ec008c" asp-page="Create" asp-route-id="@Model.placowkaID">Dodaj nowy oddział</a>
+    </button>
+    <div class="col-md-1"></div>
+    <button type="submit" class="btn fs-2 rounded col-md-5 mb-3" style="color:#ec008c; border:solid; border-color:#ec008c">
+        <a class="nav-link" style="color:#ec008c" asp-area="" asp-page="/Manage/Index">Powrót</a>
+    </button>
+</div>

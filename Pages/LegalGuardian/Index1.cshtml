@@ -1,0 +1,90 @@
+﻿@page
+@model kindergartenAPP.Pages.LegalGuardian.Index1Model
+
+@{
+    ViewData["Title"] = "Index1";
+}
+
+<h1>Index1</h1>
+
+<p>
+    <a asp-page="Create">Create New</a>
+</p>
+<table class="table">
+    <thead>
+        <tr>
+            <th>
+                @Html.DisplayNameFor(model => model.Opiekun[0].UzytkownikID)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Opiekun[0].Imie)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Opiekun[0].Nazwisko)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Opiekun[0].Ulica)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Opiekun[0].Dom)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Opiekun[0].Lokal)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Opiekun[0].Telefon)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Opiekun[0].Komorka)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Opiekun[0].Email)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Opiekun[0].Miejscowosc)
+            </th>
+            <th></th>
+        </tr>
+    </thead>
+    <tbody>
+@foreach (var item in Model.Opiekun) {
+        <tr>
+            <td>
+                @Html.DisplayFor(modelItem => item.UzytkownikID)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Imie)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Nazwisko)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Ulica)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Dom)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Lokal)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Telefon)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Komorka)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Email)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Miejscowosc.ID)
+            </td>
+            <td>
+                <a asp-page="./Edit" asp-route-id="@item.ID">Edit</a> |
+                <a asp-page="./Details" asp-route-id="@item.ID">Details</a> |
+                <a asp-page="./Delete" asp-route-id="@item.ID">Delete</a>
+            </td>
+        </tr>
+}
+    </tbody>
+</table>
